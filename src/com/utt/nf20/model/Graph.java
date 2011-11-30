@@ -82,6 +82,7 @@ public class Graph {
     }
 
     /**
+     * Ajout des commentaires de test.
      * Récupère un attribut à partir d'une ligne de fichier (nombre de noeuds ou nombre d'arcs)
      * @param line La ligne du fichier à traiter
      * @return L'attribut (nombre de noeuds ou nombre d'arcs)
