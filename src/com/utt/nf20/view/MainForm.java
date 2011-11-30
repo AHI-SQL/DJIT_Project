@@ -2,6 +2,7 @@ package com.utt.nf20.view;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -9,7 +10,7 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableModel;
 import com.utt.nf20.model.Graph;
-import org.jvnet.substance.skin.SubstanceOfficeSilver2007LookAndFeel;
+import org.jvnet.substance.SubstanceLookAndFeel;
 
 /**
  * La fenêtre principale de l'application
@@ -304,9 +305,9 @@ public class MainForm extends javax.swing.JFrame {
         algorithm_Dijkstra();
     }//GEN-LAST:event_algorithme_DijkstraActionPerformed
 
-    public static void main(String args[]) {
+    public static void main(String args[]) throws ParseException {
         try {
-            UIManager.setLookAndFeel(new SubstanceOfficeSilver2007LookAndFeel());
+            UIManager.setLookAndFeel(new SubstanceLookAndFeel());
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
