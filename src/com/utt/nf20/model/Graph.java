@@ -235,4 +235,43 @@ public class Graph {
         }
         return predecesseurs;
     }
+    
+    /**
+     * Effectue l'algorithme de Dijkstra sur le graphe
+     * @param initialNode Le noeud de départ, à partir duquel on va chercher un plus court chemin vers tous les autres noeuds du graphe
+     * @return Les coûts minimums entre un noeud initial et tous les autres noeuds du graphe
+     */
+    public int[] doAlgorithm_Dijkstra(int initialNode) {
+        int min = INFINITE_COST;
+        int successeur = initialNode;
+        int[] dist = new int[numberOfNodes];
+        boolean[] sommetsFixes = new boolean[numberOfNodes];
+
+        for (int i = 0; i < sommetsFixes.length; i++) {
+            sommetsFixes[i] = false;
+        }
+
+        for (int i = 0; i < numberOfNodes; i++) {
+            dist[i] = listOfArcs[initialNode][i];
+            sommetsFixes[initialNode] = true;
+            for (i = 0; i < numberOfNodes - 1; i++) {
+                min = INFINITE_COST;
+                successeur = initialNode;
+                for (int j = 0; j < numberOfNodes; j++) {
+                    if (!sommetsFixes[j] && dist[j] < min) {
+                        successeur = j;
+                        min = dist[j];
+                    }
+                    sommetsFixes[successeur] = true;
+                }               
+            }
+            for (int w = 0; w < numberOfNodes; w++) {
+                if (!sommetsFixes[w] && dist[successeur] + listOfArcs[successeur][w] < dist[w]) {
+                    dist[w] = dist[successeur] + listOfArcs[successeur][w];
+                }
+            }
+        }
+        return dist;
+    }
+    
 }
