@@ -190,31 +190,65 @@ public class Graph {
      * @return Les coûts minimums entre un noeud initial et tous les autres noeuds du graphe
      */
     public int[] doAlgorithm_Bellman(int initialNode) {
-        int[] d = new int[numberOfNodes];
-        int[] pere = new int[numberOfNodes];
-        for (int i = 0; i < d.length; i++) {
-            d[i] = INFINITE_COST;
+        int[] minimalCosts = new int[numberOfNodes];
+        for (int i = 0; i < numberOfNodes; i++) {
+            minimalCosts[i] = INFINITE_COST;
         }
-        d[initialNode] = 0;
-        pere[initialNode] = 0;
-        boolean trouver = false;
+        minimalCosts[initialNode] = 0;
+        boolean found = false;
         int k = 0;
         do {
             k++;
-            trouver = false;
-            for (int y = 0; y < d.length; y++) {
-                int[] predecesseur = findPredecessors(y);
-                for (int i = 0; i < predecesseur.length; i++) {
-                    int x = predecesseur[i];
-                    if (d[x] + listOfArcs[x][y] < d[y]) {
-                        d[y] = d[x] + listOfArcs[x][y];
-                        pere[y] = x;
-                        trouver = true;
+            found = false;
+            for (int y = 0; y < minimalCosts.length; y++) {
+                int[] predecessor = findPredecessors(y);
+                for (int i = 0; i < predecessor.length; i++) {
+                    int x = predecessor[i];
+                    if (minimalCosts[x] + listOfArcs[x][y] < minimalCosts[y]) {
+                        minimalCosts[y] = minimalCosts[x] + listOfArcs[x][y];
+                        found = true;
                     }
                 }
             }
-        } while (trouver);
-        return d;
+        } while (found);
+        return minimalCosts;
+    }
+
+    /**
+     * Effectue l'algorithme de Dijkstra sur le graphe
+     * @param initialNode Le noeud de départ, à partir duquel on va chercher un plus court chemin vers tous les autres noeuds du graphe
+     * @return Les coûts minimums entre un noeud initial et tous les autres noeuds du graphe
+     */
+    public int[] doAlgorithm_Dijkstra(int initialNode) {
+        int[] minimalCosts = new int[numberOfNodes];
+        boolean[] visitedNodes = new boolean[numberOfNodes];
+        for (int i = 0; i < numberOfNodes; i++) {
+            minimalCosts[i] = INFINITE_COST;
+            visitedNodes[i] = false;
+        }
+        minimalCosts[initialNode] = 0;
+        int min = INFINITE_COST;
+        int x = 0;
+        int y = 0;
+
+        for (int k = 0; k < numberOfNodes; k++) {
+            min = INFINITE_COST;
+            for (y = 0; y < numberOfNodes; y++) {
+                if ((!visitedNodes[y]) && (minimalCosts[y] < min)) {
+                    x = y;
+                    min = minimalCosts[y];
+                }
+            }
+            visitedNodes[x] = true;
+            int[] successors = findSuccessors(x);
+            for (int i = 0; i < successors.length; i++) {
+                y = successors[i];
+                if (min + listOfArcs[x][y] < minimalCosts[y]) {
+                    minimalCosts[y] = min + listOfArcs[x][y];
+                }
+            }
+        }
+        return minimalCosts;
     }
 
     /**
@@ -229,49 +263,29 @@ public class Graph {
                 arrayList.add(i);
             }
         }
-        int[] predecesseurs = new int[arrayList.size()];
-        for (int i = 0; i < predecesseurs.length; i++) {
-            predecesseurs[i] = arrayList.get(i);
+        int[] predecessors = new int[arrayList.size()];
+        for (int i = 0; i < predecessors.length; i++) {
+            predecessors[i] = arrayList.get(i);
         }
-        return predecesseurs;
+        return predecessors;
     }
-    
+
     /**
-     * Effectue l'algorithme de Dijkstra sur le graphe
-     * @param initialNode Le noeud de départ, à partir duquel on va chercher un plus court chemin vers tous les autres noeuds du graphe
-     * @return Les coûts minimums entre un noeud initial et tous les autres noeuds du graphe
+     * Cherche les successeurs d'un noeud
+     * @param node Le noeud sur lequel on va chercher les successeurs
+     * @return Les successeurs du noeud
      */
-    public int[] doAlgorithm_Dijkstra(int initialNode) {
-        int min = INFINITE_COST;
-        int successeur = initialNode;
-        int[] dist = new int[numberOfNodes];
-        boolean[] sommetsFixes = new boolean[numberOfNodes];
-
-        for (int i = 0; i < sommetsFixes.length; i++) {
-            sommetsFixes[i] = false;
-        }
-
-        for (int i = 0; i < numberOfNodes; i++) {
-            dist[i] = listOfArcs[initialNode][i];
-            sommetsFixes[initialNode] = true;
-            for (i = 0; i < numberOfNodes - 1; i++) {
-                min = INFINITE_COST;
-                successeur = initialNode;
-                for (int j = 0; j < numberOfNodes; j++) {
-                    if (!sommetsFixes[j] && dist[j] < min) {
-                        successeur = j;
-                        min = dist[j];
-                    }
-                    sommetsFixes[successeur] = true;
-                }               
-            }
-            for (int w = 0; w < numberOfNodes; w++) {
-                if (!sommetsFixes[w] && dist[successeur] + listOfArcs[successeur][w] < dist[w]) {
-                    dist[w] = dist[successeur] + listOfArcs[successeur][w];
-                }
+    private int[] findSuccessors(int node) {
+        ArrayList<Integer> arrayList = new ArrayList<Integer>();
+        for (int i = 0; i < listOfArcs.length; i++) {
+            if (listOfArcs[node][i] != INFINITE_COST) {
+                arrayList.add(i);
             }
         }
-        return dist;
+        int[] successors = new int[arrayList.size()];
+        for (int i = 0; i < successors.length; i++) {
+            successors[i] = arrayList.get(i);
+        }
+        return successors;
     }
-    
 }
