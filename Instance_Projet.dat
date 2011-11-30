@@ -1,0 +1,14 @@
+NB_TASKS       5
+NB_CONSTRAINTS 3
+
+TASKS DURATION
+0     3
+1     5
+2     2
+3     6
+4     3
+CONSTRAINTS
+0     2
+0     4
+1     2
+END
