@@ -67,21 +67,32 @@ public class MainForm extends javax.swing.JFrame {
         }
     }
 
-    private void algorithme_Bellman() {
+    private void displayMinimalCosts(int initialNode, int[] costs) {
+        // On récupère le modèle par défaut de la JTable
+        DefaultTableModel defaultTableModel = (DefaultTableModel) minimalCosts_Table.getModel();
+        // On vide le modèle par défaut de la JTable
+        clearDefaultTableModel(defaultTableModel);
+
+        for (int i = 0; i < costs.length; i++) {
+            Object[] o = {initialNode, i, costs[i]};
+            defaultTableModel = (DefaultTableModel) minimalCosts_Table.getModel();
+            defaultTableModel.addRow(o);
+        }
+    }
+
+    private void algorithm_Bellman() {
         if (instanceFile != null) {
-
-            // On récupère le modèle par défaut de la JTable
-            DefaultTableModel defaultTableModel = (DefaultTableModel) minimalCosts_Table.getModel();
-            // On vide le modèle par défaut de la JTable
-            clearDefaultTableModel(defaultTableModel);
-
             int initialNode = Integer.parseInt(nodes_ComboBox.getSelectedItem().toString());
-            int[] d = instanceFile.doAlgorithm_Bellman(initialNode);
-            for (int i = 0; i < d.length; i++) {
-                Object[] o = {initialNode, i, d[i]};
-                defaultTableModel = (DefaultTableModel) minimalCosts_Table.getModel();
-                defaultTableModel.addRow(o);
-            }
+            int[] couts = instanceFile.doAlgorithm_Bellman(initialNode);
+            displayMinimalCosts(initialNode, couts);
+        }
+    }
+
+    private void algorithm_Dijkstra() {
+        if (instanceFile != null) {
+            int initialNode = Integer.parseInt(nodes_ComboBox.getSelectedItem().toString());
+            int[] couts = instanceFile.doAlgorithm_Dijkstra(initialNode);
+            displayMinimalCosts(initialNode, couts);
         }
     }
 
@@ -194,6 +205,11 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         algorithme_Dijkstra.setText("Effectuer l'algorithme de Dijkstra");
+        algorithme_Dijkstra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                algorithme_DijkstraActionPerformed(evt);
+            }
+        });
 
         minimalCosts_Table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -281,8 +297,12 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_fileChoice_ButtonActionPerformed
 
     private void algorithme_BellmanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algorithme_BellmanActionPerformed
-        algorithme_Bellman();
+        algorithm_Bellman();
     }//GEN-LAST:event_algorithme_BellmanActionPerformed
+
+    private void algorithme_DijkstraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_algorithme_DijkstraActionPerformed
+        algorithm_Dijkstra();
+    }//GEN-LAST:event_algorithme_DijkstraActionPerformed
 
     public static void main(String args[]) {
         try {
