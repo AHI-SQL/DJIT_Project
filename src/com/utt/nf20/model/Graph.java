@@ -263,11 +263,7 @@ public class Graph {
                 arrayList.add(i);
             }
         }
-        int[] predecessors = new int[arrayList.size()];
-        for (int i = 0; i < predecessors.length; i++) {
-            predecessors[i] = arrayList.get(i);
-        }
-        return predecessors;
+        return copyListIntoArray(arrayList);
     }
 
     /**
@@ -282,10 +278,19 @@ public class Graph {
                 arrayList.add(i);
             }
         }
-        int[] successors = new int[arrayList.size()];
-        for (int i = 0; i < successors.length; i++) {
-            successors[i] = arrayList.get(i);
+        return copyListIntoArray(arrayList);
+    }
+
+    /**
+     * Recopie une liste (ArrayList) d'entiers (à taille dynamique) dans un tableau d'entiers (à taille statique)
+     * @param arrayList La liste d'entiers (taille dynamique)
+     * @return Le tableau d'entiers (taille statique)
+     */
+    private int[] copyListIntoArray(ArrayList<Integer> arrayList) {
+        int[] array = new int[arrayList.size()];
+        for (int i = 0; i < array.length; i++) {
+            array[i] = arrayList.get(i);
         }
-        return successors;
+        return array;
     }
 }
