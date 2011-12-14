@@ -73,7 +73,7 @@ public class Graph {
     private void moveCursorToNextCharacter(String line) {
         boolean stop = false;
         while (!stop && cursor < line.length()) {
-            if (line.charAt(cursor) != ' ') {
+            if (Character.isDigit(line.charAt(cursor)) || line.charAt(cursor) == '-') {
                 stop = true;
             } else {
                 cursor++;
