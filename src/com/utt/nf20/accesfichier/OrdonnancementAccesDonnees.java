@@ -135,6 +135,7 @@ public class OrdonnancementAccesDonnees
 		}
 	}
 
+	/* Cette partie peut facilement être améliorée même si le graphe n'est pas facile à construire */
 	public void constructionPredecesseurSuccesseur()
 	{
 		/* On va affecter suite à la lecture du fichier, les prédecesseurs pour les sommets n'ayant aucun prédecesseur */

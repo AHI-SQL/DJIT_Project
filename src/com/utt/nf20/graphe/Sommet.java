@@ -19,7 +19,7 @@ public class Sommet
 
 	/* Partie pour l'ordonnacement */
 	private ArrayList<Sommet> listePredecesseur = new ArrayList<Sommet>();
-	/* La couleur sert pour le trip topologique et permet de distinguer les sommets lorsque l'on va les parcourir
+	/* La couleur sert pour le tri topologique et permet de distinguer les sommets lorsque l'on va les parcourir
 	 * pour détecter quand ils doivent être réalisés, 3 couleurs sont possible : blanc, gris, noir */
 	private String couleur;
 	/* Ces dates sont importantes et surtout la date de fin d'exame, car elle indique quel est le sommet ou tâche
