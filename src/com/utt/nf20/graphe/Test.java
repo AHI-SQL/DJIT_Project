@@ -5,6 +5,7 @@ import com.utt.nf20.accesfichier.AccesDonnees;
 /**
  *
  * @author dod
+ * Fichier de test, inutile.
  */
 
 public class Test

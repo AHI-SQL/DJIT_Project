@@ -42,6 +42,7 @@ public class OrdonnancementAccesDonnees
 		this.constructionPredecesseurSuccesseur();
 	}
 
+	/* A changer l'adresse vers le fichier pour la lecture */
 	public void lectureArcsFichier()
 	{
 		try
