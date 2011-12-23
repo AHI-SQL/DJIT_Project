@@ -10,16 +10,21 @@ import java.util.LinkedList;
 
 public class AlgorithmeOrdonnancement
 {
+	/* Représente la référence vers le fichier permettant la lecture du fichier, on pourra ainsi avoir accès au graphe
+	 * construit suite à la lecture du fichier */
 	private OrdonnancementAccesDonnees oad;
 	private int daterSommet;
-	private LinkedList<Sommet> listeTriTopologique = new LinkedList<Sommet>();
-	private Graphe grapheOrdonnancementConstruction = new Graphe();
+	/* Cette liste permet de contenir les sommets triés dans l'ordre topologique */
+	private LinkedList<Sommet> listeTriTopologique;
 
 	public AlgorithmeOrdonnancement()
 	{
+		listeTriTopologique = new LinkedList<Sommet>();
 		oad = new OrdonnancementAccesDonnees();
 	}
 
+	/* On va initialiser l'ensemble des sommets avant d'effectuer un tri topologique,
+	 * chaque sommet se voit attribuer la couleur blanche */
 	private void parcoursProfondeur()
 	{
 		for (Sommet sommet : oad.getListeSommets())
@@ -37,6 +42,10 @@ public class AlgorithmeOrdonnancement
 		}
 	}
 
+	/* On effectue un parcours en profondeur afin de déterminer quelle tâche doit être effectuée
+	 en premier, cela correcpond au tri topologique, le premier sommet à devenir noir sera la dernière
+	 tâche que l'on peu effectuer. Cette tâche sera ajouée en premier dans la liste (listeTriTopologique)
+	 on va donc l'ajouter en premier puis les sommets qui suivront seront ajoutés avant ce sommet */
 	private void visiterParcoursProfondeur(Sommet sommet)
 	{
 		daterSommet++;
@@ -58,7 +67,10 @@ public class AlgorithmeOrdonnancement
 		listeTriTopologique.addFirst(sommet);
 	}
 
-	public void triTopologique()
+	/* On va parcourir le graphe et effectuer l'algorithme de Bellman-Ford mais en changeant le signe > par <
+	 * et en initialisant lors de la lecture du fichier les sommets avec un poids de -99999 sauf pour le premier
+	 * sommet */
+	public int rechercheDureeMaximale()
 	{
 		parcoursProfondeur();
 		oad.getGrapheOrdonnacement().getListeSommets().get(0).setPoids(0);
@@ -82,6 +94,6 @@ public class AlgorithmeOrdonnancement
 			}
 		}
 
-		System.out.println("Durée maximale : " + dureeMaxTemp);
+		return dureeMax;
 	}
 }

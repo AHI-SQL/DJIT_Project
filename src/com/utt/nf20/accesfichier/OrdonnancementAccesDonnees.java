@@ -19,13 +19,21 @@ import java.util.logging.Logger;
 
 public class OrdonnancementAccesDonnees
 {
+	/* Permet de lire un fichier */
 	BufferedReader entreeFichier;
+	/* Stocke la ligne lue */
 	String ligneLue = "";
+	/* Récupère le sommet stocké dans le fichier */
 	int sommet = 0;
-	int SommetSuite = 0;
+	/* Stocke l'ensemble des sommets récupérés dans le fichier */
 	private ArrayList<Sommet> listeSommets = new ArrayList<Sommet>();
+	/* Stocke les arcs formés après la lecture du fichier */
 	private ArrayList<Arc> listeArcs = new ArrayList<Arc>();
-	private Sommet sommetDepart, sommetArrivee, sommetFictifDepart, sommetFictifArrivee;
+	/* Représente les sommets formés lors de la lecture des contraintes, ces sommets permettront de générer les premiers arcs */
+	private Sommet sommetDepart, sommetArrivee;
+	/* Représente le sommet fictif S de départ, et F d'arrivée */
+	private Sommet sommetFictifDepart, sommetFictifArrivee;
+	/* L'ensemble des sommets et des arcs seront stockés au sein du graphe */
 	private Graphe grapheOrdonnacement = new Graphe();
 
 	public OrdonnancementAccesDonnees()
@@ -38,8 +46,8 @@ public class OrdonnancementAccesDonnees
 	{
 		try
 		{
-			/* Sommet fictif de départ */
 			sommetFictifDepart = new Sommet(11111);
+			/* On ajoute le sommet fictif de départ à la liste des sommets */
 			listeSommets.add(sommetFictifDepart);
 			entreeFichier = new BufferedReader(new FileReader("C:\\Users\\dod\\Desktop\\NF20\\Jeu_Essai\\instance_projet.dat"));
 
@@ -55,7 +63,12 @@ public class OrdonnancementAccesDonnees
 				ligneLue = entreeFichier.readLine();
 				if (ligneLue.equals("CONSTRAINTS"))
 				{
+					/* Une fois arrivée à la ligne contrainte qui représente la deuxième partie du fichier,
+					 * on va lire cette seconde partie, on donc faire appel à la méthode lectureContrainteFichier
+					 * avec la référence sur le fichier */
 					this.lectureContraintesFichier(entreeFichier);
+					/* On a l'ensemble de nos sommets à la fin de la lecture du fichier et il nous reste
+					 * plus qu'à ajouter le sommet fictif final F */
 					sommetFictifArrivee = new Sommet(99999);
 					listeSommets.add(sommetFictifArrivee);
 					entreeFichier.close();
@@ -123,6 +136,7 @@ public class OrdonnancementAccesDonnees
 
 	public void constructionPredecesseurSuccesseur()
 	{
+		/* On va affecter suite à la lecture du fichier, les prédecesseurs pour les sommets n'ayant aucun prédecesseur */
 		for (Sommet elementSommet : listeSommets)
 		{
 			if (elementSommet.getListePredecesseur().size() == 0)

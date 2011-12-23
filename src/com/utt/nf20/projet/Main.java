@@ -14,6 +14,6 @@ public class Main
 		//AlgorithmeBellman algorithmeTest = new AlgorithmeBellman();
 		//algorithmeTest.algorithmeBellman();
 		AlgorithmeOrdonnancement ad = new AlgorithmeOrdonnancement();
-		ad.triTopologique();
+		System.out.println(ad.rechercheDureeMaximale());
 	}
 }
