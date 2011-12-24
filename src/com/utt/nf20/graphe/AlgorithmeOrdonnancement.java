@@ -17,10 +17,10 @@ public class AlgorithmeOrdonnancement
 	/* Cette liste permet de contenir les sommets triés dans l'ordre topologique */
 	private LinkedList<Sommet> listeTriTopologique;
 
-	public AlgorithmeOrdonnancement()
+	public AlgorithmeOrdonnancement(String nomFichier)
 	{
 		listeTriTopologique = new LinkedList<Sommet>();
-		oad = new OrdonnancementAccesDonnees();
+		oad = new OrdonnancementAccesDonnees(nomFichier);
 	}
 
 	/* On va initialiser l'ensemble des sommets avant d'effectuer un tri topologique,

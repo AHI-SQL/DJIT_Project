@@ -13,7 +13,7 @@ public class Main
 	{
 		//AlgorithmeBellman algorithmeTest = new AlgorithmeBellman();
 		//algorithmeTest.algorithmeBellman();
-		AlgorithmeOrdonnancement ad = new AlgorithmeOrdonnancement();
-		System.out.println(ad.rechercheDureeMaximale());
+		//AlgorithmeOrdonnancement ad = new AlgorithmeOrdonnancement();
+		//System.out.println(ad.rechercheDureeMaximale());
 	}
 }

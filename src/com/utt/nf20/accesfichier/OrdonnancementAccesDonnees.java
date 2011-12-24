@@ -36,21 +36,21 @@ public class OrdonnancementAccesDonnees
 	/* L'ensemble des sommets et des arcs seront stockés au sein du graphe */
 	private Graphe grapheOrdonnacement = new Graphe();
 
-	public OrdonnancementAccesDonnees()
+	public OrdonnancementAccesDonnees(String nomFichier)
 	{
-		this.lectureArcsFichier();
+		this.lectureArcsFichier(nomFichier);
 		this.constructionPredecesseurSuccesseur();
 	}
 
 	/* A changer l'adresse vers le fichier pour la lecture */
-	public void lectureArcsFichier()
+	public void lectureArcsFichier(String nomFichier)
 	{
 		try
 		{
 			sommetFictifDepart = new Sommet(11111);
 			/* On ajoute le sommet fictif de départ à la liste des sommets */
 			listeSommets.add(sommetFictifDepart);
-			entreeFichier = new BufferedReader(new FileReader("C:\\Users\\dod\\Desktop\\NF20\\Jeu_Essai\\instance_projet.dat"));
+			entreeFichier = new BufferedReader(new FileReader(nomFichier));
 
 			/* On va lire les premières lignes */
 			for (int i = 0; i < 4; i++)
