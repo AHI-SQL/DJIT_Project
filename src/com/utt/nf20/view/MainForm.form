@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.1" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -34,7 +34,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="0" pref="626" max="32767" attributes="0"/>
                   <Component id="jPanel4" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -47,7 +47,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" pref="418" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="398" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -125,7 +125,7 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="nodes_ComboBox" pref="180" max="32767" attributes="0"/>
+                                          <Component id="nodes_ComboBox" pref="156" max="32767" attributes="0"/>
                                       </Group>
                                       <Component id="algorithme_Dijkstra" alignment="0" pref="275" max="32767" attributes="1"/>
                                       <Component id="jScrollPane2" alignment="0" min="-2" pref="275" max="-2" attributes="0"/>
@@ -162,9 +162,9 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="listOfArcs_Label1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jScrollPane2" pref="165" max="32767" attributes="1"/>
+                                  <Component id="jScrollPane2" pref="128" max="32767" attributes="1"/>
                               </Group>
-                              <Component id="jScrollPane1" alignment="1" pref="185" max="32767" attributes="1"/>
+                              <Component id="jScrollPane1" alignment="1" pref="149" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
                       </Group>
@@ -229,7 +229,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="arcs_Label" pref="106" max="32767" attributes="0"/>
+                              <Component id="arcs_Label" pref="102" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -409,11 +409,11 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="projetChoixFichier_Bouton" alignment="0" min="-2" pref="227" max="-2" attributes="0"/>
-                          <Component id="dureeMin_JLabel" alignment="1" pref="587" max="32767" attributes="0"/>
+                          <Component id="projetChoixFichier_Bouton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="dureeMin_JLabel" alignment="0" pref="597" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -426,7 +426,7 @@
                       <Component id="projetChoixFichier_Bouton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="dureeMin_JLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="345" max="32767" attributes="0"/>
+                      <EmptySpace pref="317" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -542,7 +542,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel3" pref="358" max="32767" attributes="0"/>
+                      <Component id="jLabel3" pref="359" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -550,7 +550,7 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace pref="15" max="32767" attributes="0"/>
                       <Component id="jLabel3" min="-2" pref="51" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>

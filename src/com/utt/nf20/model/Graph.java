@@ -109,21 +109,23 @@ public class Graph {
         cursor = 0;
 
         // On cherche le sommet origine
-        String origin = getAttributeFromString(line);
+        int origin = Integer.parseInt(getAttributeFromString(line));
 
         // On passe au prochain nombre
         moveCursorToNextCharacter(line);
 
         // On cherche le sommet destination
-        String destination = getAttributeFromString(line);
+        int destination = Integer.parseInt(getAttributeFromString(line));
 
         // On passe au prochain nombre
         moveCursorToNextCharacter(line);
 
         // On cherche le cout
-        String cost = getAttributeFromString(line);
+        int cost = Integer.parseInt(getAttributeFromString(line));
 
-        listOfArcs[Integer.parseInt(origin)][Integer.parseInt(destination)] = Integer.parseInt(cost);
+        if (cost != 0) {
+            listOfArcs[origin][destination] = cost;
+        }
     }
 
     /**
