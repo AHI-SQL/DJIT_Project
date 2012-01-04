@@ -10,6 +10,8 @@ import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.table.DefaultTableModel;
 import com.utt.nf20.model.Graph;
+import java.io.File;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * La fenêtre principale de l'application
@@ -24,14 +26,15 @@ public class MainForm extends javax.swing.JFrame {
 
     public MainForm() {
         initComponents();
-
         panel_PCC.setVisible(false);
+        selecteurFichier.setFileFilter(new FileNameExtensionFilter("Instance", "dat"));
+        selecteurFichier.setCurrentDirectory(new File("." + File.separator));
     }
 
     private void chooseFile() {
-        if (fileChoice_FileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+        if (selecteurFichier.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
             try {
-                instanceFile = new Graph(fileChoice_FileChooser.getSelectedFile());
+                instanceFile = new Graph(selecteurFichier.getSelectedFile());
                 panel_PCC.setVisible(true);
             } catch (FileNotFoundException ex) {
                 Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +107,7 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fileChoice_FileChooser = new javax.swing.JFileChooser();
+        selecteurFichier = new javax.swing.JFileChooser();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         panel_PCC = new javax.swing.JPanel();
@@ -262,14 +265,14 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panel_PCCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(listOfArcs_Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                            .addComponent(algorithme_Bellman, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                            .addComponent(listOfArcs_Label1, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                            .addComponent(algorithme_Bellman, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
                             .addGroup(panel_PCCLayout.createSequentialGroup()
                                 .addComponent(jLabel1)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nodes_ComboBox, 0, 156, Short.MAX_VALUE))
-                            .addComponent(algorithme_Dijkstra, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(nodes_ComboBox, 0, 238, Short.MAX_VALUE))
+                            .addComponent(algorithme_Dijkstra, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panel_PCCLayout.setVerticalGroup(
@@ -344,7 +347,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(projetChoixFichier_Bouton)
-                    .addComponent(dureeMin_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 597, Short.MAX_VALUE))
+                    .addComponent(dureeMin_JLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -394,7 +397,7 @@ public class MainForm extends javax.swing.JFrame {
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel6Layout.setVerticalGroup(
@@ -433,7 +436,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
                     .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -448,7 +451,7 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-638)/2, (screenSize.height-585)/2, 638, 585);
+        setBounds((screenSize.width-762)/2, (screenSize.height-585)/2, 762, 585);
     }// </editor-fold>//GEN-END:initComponents
 
     private void fileChoice_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileChoice_ButtonActionPerformed
@@ -464,9 +467,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_algorithme_DijkstraActionPerformed
 
     private void projetChoixFichier_BoutonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_projetChoixFichier_BoutonActionPerformed
-
-        if (fileChoice_FileChooser.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
-            ordonnancement = new AlgorithmeOrdonnancement(fileChoice_FileChooser.getSelectedFile().toString());
+        if (selecteurFichier.showOpenDialog(null) == JFileChooser.APPROVE_OPTION) {
+            ordonnancement = new AlgorithmeOrdonnancement(selecteurFichier.getSelectedFile().toString());
             dureeMin_JLabel.setText(String.format("La durée minimale pour ce projet est : %d ", ordonnancement.rechercheDureeMaximale()));
         }
     }//GEN-LAST:event_projetChoixFichier_BoutonActionPerformed
@@ -492,7 +494,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel arcs_Panel;
     private javax.swing.JLabel dureeMin_JLabel;
     private javax.swing.JButton fileChoice_Button;
-    private javax.swing.JFileChooser fileChoice_FileChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -513,5 +514,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel nodes_Panel;
     private javax.swing.JPanel panel_PCC;
     private javax.swing.JButton projetChoixFichier_Bouton;
+    private javax.swing.JFileChooser selecteurFichier;
     // End of variables declaration//GEN-END:variables
 }
