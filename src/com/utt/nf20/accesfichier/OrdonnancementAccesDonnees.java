@@ -77,13 +77,20 @@ public class OrdonnancementAccesDonnees
 				}
 				else
 				{
+					/* On vérifie s'il existe des tabulations, si c'est le cas on les remplace par des espaces
+					 * pour n'avoir qu'un seul séparateur commun à donner à la classe StringTokenizer.
+					 */
+					ligneLue = ligneLue.replace("	", " ");
 					StringTokenizer tokenElement = new StringTokenizer(ligneLue, " ");
+					
 					sommet = Integer.parseInt(tokenElement.nextToken());
+					//sommet = 9;//Faux
 					sommetDepart = new Sommet(sommet);
 					listeSommets.add(sommetDepart);
 				
 					int nbEspaces = tokenElement.countTokens();
-					for (int i=0 ; i < nbEspaces ; i++)
+					
+					for (int i=0; i < nbEspaces; i++)
 					{
 						sommetDepart.setPoids(Integer.parseInt(tokenElement.nextElement().toString()));
 					}
@@ -113,6 +120,7 @@ public class OrdonnancementAccesDonnees
 				}
 				else
 				{
+					ligneLue = ligneLue.replace("	", " ");
 					StringTokenizer tokenElement = new StringTokenizer(ligneLue, " ");
 					sommet = Integer.parseInt(tokenElement.nextToken());
 					sommetDepart = Utilitaire.recherche(listeSommets, sommet);
