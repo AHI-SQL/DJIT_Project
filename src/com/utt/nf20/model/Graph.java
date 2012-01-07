@@ -6,6 +6,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Un graphe, créé à partir d'une instance de fichier
